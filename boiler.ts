@@ -8,24 +8,26 @@ import {
 export const prompt: PromptBoiler = async () => {
   const prompts: BoilerPrompt[] = []
 
-  // prompts.push({
-  //   type: "input",
-  //   name: "someValue",
-  //   message: "some message",
-  //   default: "some default",
-  // })
+  prompts.push({
+    type: "confirm",
+    name: "fsExtraDev",
+    message: "install fs-extra as dev dependency?",
+    default: true,
+  })
 
   return prompts
 }
 
-export const install: ActionBoiler = async () => {
+export const install: ActionBoiler = async ({
+  allAnswers,
+}) => {
   const actions: BoilerAction[] = []
 
-  // actions.push({
-  //   action: "npmInstall",
-  //   dev: true,
-  //   source: ["some-package"],
-  // })
+  actions.push({
+    action: "npmInstall",
+    dev: allAnswers.fsExtraDev,
+    source: ["fs-extra"],
+  })
 
   return actions
 }
@@ -33,11 +35,11 @@ export const install: ActionBoiler = async () => {
 export const uninstall: ActionBoiler = async () => {
   const actions: BoilerAction[] = []
 
-  // actions.push({
-  //   action: "npmUninstall",
-  //   dev: true,
-  //   source: ["some-package"],
-  // })
+  actions.push({
+    action: "npmInstall",
+    source: ["fs-extra"],
+    uninstall: true,
+  })
 
   return actions
 }
@@ -45,11 +47,11 @@ export const uninstall: ActionBoiler = async () => {
 export const generate: ActionBoiler = async () => {
   const actions: BoilerAction[] = []
 
-  // actions.push({
-  //   action: "write",
-  //   path: "src/someName.ts",
-  //   sourcePath: "tsignore/someName.ts",
-  // })
+  actions.push({
+    action: "write",
+    path: "src/ls.ts",
+    sourcePath: "tsignore/ls.ts",
+  })
 
   return actions
 }
