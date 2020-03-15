@@ -27,8 +27,8 @@ export class Ls {
     options.files = options.files.concat(files)
 
     await Promise.all(
-      dirs.map(async dirName => {
-        await this.deepLs(join(dir, dirName), options)
+      dirs.map(async path => {
+        await this.deepLs(path, options)
       })
     )
 
@@ -47,7 +47,7 @@ export class Ls {
           await stat(join(dir, name))
         ).isDirectory()
 
-        if (name[0] === ".") {
+        if (name[0] === "." || name === "node_modules") {
           // do nothing
         } else if (isDir) {
           dirs.push(join(dir, name))
