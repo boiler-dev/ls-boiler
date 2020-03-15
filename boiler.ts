@@ -5,19 +5,6 @@ import {
   BoilerPrompt,
 } from "boiler-dev"
 
-export const prompt: PromptBoiler = async () => {
-  const prompts: BoilerPrompt[] = []
-
-  prompts.push({
-    type: "confirm",
-    name: "fsExtraDev",
-    message: "install fs-extra as dev dependency?",
-    default: true,
-  })
-
-  return prompts
-}
-
 export const install: ActionBoiler = async ({
   allAnswers,
 }) => {
@@ -26,7 +13,7 @@ export const install: ActionBoiler = async ({
   actions.push({
     action: "npmInstall",
     dev: allAnswers.fsExtraDev,
-    source: ["fs-extra"],
+    source: ["fs-extra", "@types/fs-extra"],
   })
 
   return actions
@@ -37,7 +24,7 @@ export const uninstall: ActionBoiler = async () => {
 
   actions.push({
     action: "npmInstall",
-    source: ["fs-extra"],
+    source: ["fs-extra", "@types/fs-extra"],
     uninstall: true,
   })
 
