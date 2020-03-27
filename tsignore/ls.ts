@@ -27,7 +27,7 @@ export class Ls {
     options.files = options.files.concat(files)
 
     await Promise.all(
-      dirs.map(async path => {
+      dirs.map(async (path) => {
         await this.deepLs(path, options)
       })
     )
