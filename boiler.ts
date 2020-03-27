@@ -22,11 +22,11 @@ export const install: ActionBoiler = async ({
 export const uninstall: ActionBoiler = async () => {
   const actions: BoilerAction[] = []
 
-  actions.push({
-    action: "npmInstall",
-    source: ["fs-extra", "@types/fs-extra"],
-    uninstall: true,
-  })
+  // actions.push({
+  //   action: "npmInstall",
+  //   source: ["fs-extra", "@types/fs-extra"],
+  //   uninstall: true,
+  // })
 
   return actions
 }
